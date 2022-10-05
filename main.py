@@ -1,15 +1,16 @@
 import re
 
-def calculator():
+
+def calculator(exp):
     pattern = "[a-zA-Z]+"
-    expression = input("Enter the expression: ")
-    if re.search(pattern, expression):
+    if re.search(pattern, exp):
         return "Invalid input! No characters allowed."
     else:
-        return eval(expression)
+        return eval(exp)
 
 
-print(calculator())
+expression = input("Enter the expression: ")
+print(calculator(expression))
 
 # r1 = re.findall(r"^\w+",expression)
 # print(r1)
