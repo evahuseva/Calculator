@@ -24,5 +24,3 @@ expression = input("Enter the expression: ")
 
 c1 = Calc()
 print(c1.calculating())
-
-#Q
