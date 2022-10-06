@@ -1,21 +1,25 @@
 import re
 
 
-def calculator(exp):
-    pattern = "[a-zA-Z]+"
-    if re.search(pattern, exp):
-        return "Invalid input! No characters allowed."
-    else:
-        return eval(exp)
+class Calc:
+
+    def __init__(self):
+        self.isvalid = None
+        self.result = None
+
+    def validate_input(self):
+        self.isvalid = not re.search('^(?:0|[1-9]\d*)(?:[+*-](?:0|[1-9]\d*))*$', expression) is None
+        if self.isvalid:
+            return expression
+        else:
+            assert expression, 'Invalid syntax'
+
+    def calculating(self):
+        self.result = eval(str(self.validate_input()))
+        return self.result
 
 
-def incoming_data(*args):
-    expression = input("Enter the expression: ")
-    return expression
+expression = input("Enter the expression: ")
 
-
-if __name__ == '__main__':
-    print(calculator(incoming_data()))
-
-# r1 = re.findall(r"^\w+",expression)
-# print(r1)
+c1 = Calc()
+print(c1.calculating())
