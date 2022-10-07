@@ -12,8 +12,8 @@ class Calc:
         if self.isvalid:
             return expression
         else:
-            pass
-#            assert expression, 'Invalid syntax'
+            print('Invalid expression input.')
+            quit()
 
     def calculating(self):
         self.result = eval(str(self.validate_input()))
