@@ -7,17 +7,12 @@ class Calc:
         self.isvalid = None
         self.result = None
 
-    def validate_input(self):
-        self.isvalid = not re.search('^(?:0|[1-9]\d*)(?:[+*-](?:0|[1-9]\d*))*$', expression) is None
-        if self.isvalid:
-            return expression
-        else:
-            print('Invalid expression input.')
-            quit()
-
     def calculating(self):
-        self.result = eval(str(self.validate_input()))
-        return self.result
+#        try:
+            self.result = eval(str(expression))
+            return self.result
+#        except SyntaxError:
+#            print('Invalid expression input.')
 
 
 expression = input("Enter the expression: ")
