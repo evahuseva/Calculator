@@ -30,3 +30,4 @@ class Calc:
 expression = input("Enter the expression: ")
 c1 = Calc()
 c1.calculating()
+
