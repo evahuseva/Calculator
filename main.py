@@ -8,14 +8,29 @@ class Calc:
         self.result = None
 
     def calculating(self):
-#        try:
+        try:
+            for index in range(len(expression) - 1):
+                if expression[index] in '*-+' and expression[index + 1] == expression[index]:
+                    print('Repeating operators in a row.')
+                    pass
             self.result = eval(str(expression))
             return self.result
-#        except SyntaxError:
-#            print('Invalid expression input.')
+        except ZeroDivisionError:
+            print('Division by zero error.')
+            pass
+        except SyntaxError:
+            print('Invalid expression input.')
+            pass
+        except TypeError:
+            print('Invalid type input.')
+            pass
+        except NameError:
+            print('Invalid input.')
+            pass
+        finally:
+            pass
 
 
 expression = input("Enter the expression: ")
-
 c1 = Calc()
-print(c1.calculating())
+c1.calculating()
