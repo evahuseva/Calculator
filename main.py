@@ -1,10 +1,6 @@
-import re
-
-
 class Calc:
 
     def __init__(self):
-        self.isvalid = None
         self.result = None
 
     def calculating(self):
@@ -14,7 +10,7 @@ class Calc:
                     print('Repeating operators in a row.')
                     pass
             self.result = eval(str(expression))
-            return self.result
+            print(self.result)
         except ZeroDivisionError:
             print('Division by zero error.')
             pass
