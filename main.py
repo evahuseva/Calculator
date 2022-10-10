@@ -1,21 +1,34 @@
 import re
 
 
-def calculator(exp):
-    pattern = "[a-zA-Z]+"
-    if re.search(pattern, exp):
-        return "Invalid input! No characters allowed."
-    else:
-        return eval(exp)
+class Calc:
+
+    def __init__(self, input_expression):
+        self.is_valid = False
+        self.result = None
+        self.expression = input_expression
+
+    def validate(self):
+        if not isinstance(self.expression, str):
+            raise TypeError
+        self.is_valid = not re.search('^(?:0|[1-9]\\d*)(?:[+*-](?:0|[1-9]\\d*))*$', self.expression) is None
+        if not self.is_valid:
+            raise SyntaxError('Invalid input syntax.')
+
+    def calculate(self):
+        self.validate()
+        return eval(self.expression)
+
+    def output(self):
+        try:
+            return self.calculate()
+        except SyntaxError as syntax_error:
+            return syntax_error.msg
+        except TypeError:
+            return "Wrong input type."
+        except Exception as error:
+            return f'Abnormal exit: Unexpected error has occurred ({error.msg}).'
 
 
-def incoming_data(*args):
-    expression = input("Enter the expression: ")
-    return expression
-
-
-if __name__ == '__main__':
-    print(calculator(incoming_data()))
-
-# r1 = re.findall(r"^\w+",expression)
-# print(r1)
+c1 = Calc(input("Enter the expression: "))
+print(c1.output())
