@@ -1,4 +1,4 @@
-#from main import Calc
+from main import Calc
 
 class CalculatorTests():
 
